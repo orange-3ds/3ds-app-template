@@ -31,7 +31,7 @@ include $(DEVKITARM)/3ds_rules
 #     - icon.png
 #     - <libctru folder>/default_icon.png
 #---------------------------------------------------------------------------------
-TARGET		:=	$(notdir $(CURDIR))
+TARGET := $(shell grep -m1 '^Title:' app.cfg | sed 's/^Title:[[:space:]]*//')
 BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
