@@ -22,9 +22,9 @@ include $(DEVKITARM)/3ds_rules
 #
 # NO_SMDH: if set to anything, no SMDH file is generated.
 # ROMFS is the directory which contains the RomFS, relative to the Makefile (Optional)
-# APP_TITLE is the name of the app stored in the SMDH file (Optional)
-# APP_DESCRIPTION is the description of the app stored in the SMDH file (Optional)
-# APP_AUTHOR is the author of the app stored in the SMDH file (Optional)
+APP_TITLE := $(shell grep -m1 '^Title:' app.cfg | sed 's/^Title:[[:space:]]*//')
+APP_DESCRIPTION := $(shell grep -m1 '^Description:' app.cfg | sed 's/^Description:[[:space:]]*//')
+APP_AUTHOR := $(shell grep -m1 '^Author:' app.cfg | sed 's/^Author:[[:space:]]*//')
 # ICON is the filename of the icon (.png), relative to the project folder.
 #   If not set, it attempts to use one of the following (in this order):
 #     - <Project name>.png
