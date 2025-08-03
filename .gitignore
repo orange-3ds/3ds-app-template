@@ -1,0 +1,24 @@
+
+# Orange 3DS app build system
+*.3dsx
+*.elf
+*.o
+*.d
+build
+lib
+include
+*.cia
+*.app
+*.3ds
+*.cxi
+*.smdh
+*.tmd
+*.tik
+*.app.xml
+*.3dsx.xml
+*.elf.xml
+*.smdh
+*.bin
+orange
+*.bnr
+.orange/converted_audio_banner.wav

@@ -25,11 +25,7 @@ include $(DEVKITARM)/3ds_rules
 APP_TITLE := $(shell grep -m1 '^Title:' app.cfg | sed 's/^Title:[[:space:]]*//')
 APP_DESCRIPTION := $(shell grep -m1 '^Description:' app.cfg | sed 's/^Description:[[:space:]]*//')
 APP_AUTHOR := $(shell grep -m1 '^Author:' app.cfg | sed 's/^Author:[[:space:]]*//')
-# ICON is the filename of the icon (.png), relative to the project folder.
-#   If not set, it attempts to use one of the following (in this order):
-#     - <Project name>.png
-#     - icon.png
-#     - <libctru folder>/default_icon.png
+ICON := assets/icon.png
 #---------------------------------------------------------------------------------
 TARGET := $(shell grep -m1 '^Title:' app.cfg | sed 's/^Title:[[:space:]]*//')
 BUILD		:=	build
@@ -57,7 +53,7 @@ CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
-LIBS	:= -lctru -lm
+LIBS := -lctru $(patsubst lib%.a,-l%,$(notdir $(wildcard lib/lib*.a))) -lm
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
